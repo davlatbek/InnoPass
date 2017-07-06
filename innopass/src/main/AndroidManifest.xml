@@ -18,6 +18,7 @@
         <activity android:name=".activities.RegistrationActivity"></activity>
         <activity android:name=".activities.AdminPageActivity"></activity>
         <activity android:name=".activities.StudentPageActivity"></activity>
+        <activity android:name=".activities.SettingsActivity"></activity>
     </application>
 
 </manifest>

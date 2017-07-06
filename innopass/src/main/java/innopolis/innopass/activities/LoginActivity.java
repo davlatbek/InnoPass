@@ -50,9 +50,10 @@ public class LoginActivity extends AppCompatActivity {
                 if (validateLoginPassword(editTextLogin.getText().toString(),
                         editTextPassword.getText().toString())){
                     if (editTextLogin.getText().toString().contains("admin")) {
-                        Intent intent = new Intent(context, AdminPageActivity.class);
-                        intent.putExtra("login", editTextLogin.getText().toString());
-                        startActivity(intent);
+//                        Intent intent = new Intent(context, AdminPageActivity.class);
+//                        intent.putExtra("login", editTextLogin.getText().toString());
+//                        startActivity(intent);
+                        startActivity(new Intent(context, SettingsActivity.class));
                     } else {
                         //TODO implement login to user_id map
                         Intent intent = new Intent(context, StudentPageActivity.class);

@@ -11,5 +11,18 @@
     //AdminPage Screen
     <string name="password_confirmation">Введите пароль еще раз</string>
     <string name="cancel_registration_button">Отмена</string>
+    <string name="settings_lang_pref">Язык</string>
+    <string name="settings_save_login">Запомнить логин</string>
+    <string name="settings_save_login_summary">Запомнить логин при входе</string>
+    <string name="settings_save_password">Запомнить пароль</string>
+    <string name="settings_save_password_summary">Запомнить пароль при входе.</string>
+    <string-array name="language_entries">
+        <item>Английский</item>
+        <item>Русский</item>
+    </string-array>
+    <string-array name="language_entry_values">
+        <item>en</item>
+        <item>ru</item>
+    </string-array>
 
 </resources>
