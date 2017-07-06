@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.Locale;
+
 import innopolis.innopass.R;
 import innopolis.innopass.utilities.TempData;
 import innopolis.innopass.utilities.TempUsers;
@@ -38,6 +40,10 @@ public class LoginActivity extends AppCompatActivity {
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
         buttonLogin = (Button) findViewById(R.id.buttonLogin);
         buttonRegister = (Button) findViewById(R.id.buttonRegister);
+        setListeners();
+    }
+
+    private void setListeners() {
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

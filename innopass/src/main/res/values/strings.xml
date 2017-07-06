@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">InnoPass</string>
+
+    //Login Screen
+    <string name="login_username">Login</string>
+    <string name="login_password">Password</string>
+    <string name="login_submit_button">Login</string>
+    <string name="login_not_registered_yet">Not registered yet?</string>
+    <string name="register_submit_button">Register</string>
+
+    //AdminPage Screen
+    <string name="password_confirmation">Confirm password</string>
+    <string name="cancel_registration_button">Cancel</string>
+
 </resources>

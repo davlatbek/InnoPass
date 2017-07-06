@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">ИнноПасс</string>
+
+    //Login Screen
+    <string name="login_username">Логин</string>
+    <string name="login_password">Пароль</string>
+    <string name="login_submit_button">Войти</string>
+    <string name="login_not_registered_yet">Еще не зарегистрированы?</string>
+    <string name="register_submit_button">Зарегистрироваться</string>
+
+    //AdminPage Screen
+    <string name="password_confirmation">Введите пароль еще раз</string>
+    <string name="cancel_registration_button">Отмена</string>
+
+</resources>

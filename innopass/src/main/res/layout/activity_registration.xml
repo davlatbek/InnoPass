@@ -7,7 +7,7 @@
         android:id="@+id/textViewLog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login" />
+        android:text="@string/login_username" />
 
     <EditText
         android:id="@+id/editTextLog"
@@ -20,7 +20,7 @@
         android:id="@+id/textViewPass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Password" />
+        android:text="@string/login_password" />
 
     <EditText
         android:id="@+id/editTextPass"
@@ -33,7 +33,7 @@
         android:id="@+id/textViewPasswordConfirm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Confirm password" />
+        android:text="@string/password_confirmation" />
 
     <EditText
         android:id="@+id/editTextPasswordConfirm"
@@ -46,11 +46,11 @@
         android:id="@+id/buttonRegistration"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Register" />
+        android:text="@string/register_submit_button" />
 
     <Button
         android:id="@+id/buttonCancel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cancel" />
+        android:text="@string/cancel_registration_button" />
 </LinearLayout>
