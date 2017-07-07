@@ -4,6 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="innopolis.innopass.activities.StudentPageActivity">
+    tools:context="innopolis.innopass.activities.StudentProfileActivity">
 
 </android.support.constraint.ConstraintLayout>
