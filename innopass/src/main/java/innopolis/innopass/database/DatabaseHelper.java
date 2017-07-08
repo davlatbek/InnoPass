@@ -3,7 +3,6 @@ package innopolis.innopass.database;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.provider.ContactsContract;
 
 /**
  * Created by davlet on 07/6/17.
@@ -18,7 +17,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    public static DatabaseHelper getInstance(Context context){
+    public static synchronized DatabaseHelper getInstance(Context context){
         if (INSTANCE == null)
             INSTANCE = new DatabaseHelper(context.getApplicationContext());
         return INSTANCE;

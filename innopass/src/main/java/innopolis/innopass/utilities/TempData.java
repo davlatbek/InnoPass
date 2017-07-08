@@ -1,6 +1,7 @@
 package innopolis.innopass.utilities;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
@@ -22,19 +23,26 @@ public class TempData {
     private static Random random = new Random();
 
     static {
+        Calendar calendar = Calendar.getInstance();
         students = new ArrayList<>();
         employees = new ArrayList<>();
         contacts = new ArrayList<>();
+
+        calendar.set(1994, 01, 19);
         students.add(new Student("lillie", "clinton", "perelman",
-                new Date(123456789L), 1L, R.drawable.portraitphoto, null));
+                calendar, 1L, R.drawable.portraitphoto, null));
+        calendar.set(1990, 01, 20);
         students.add(new Student("albert", "einstein", "stein",
-                new Date(123456789L), 1L, R.drawable.einstein, null));
+                calendar, 1L, R.drawable.einstein, null));
+        calendar.set(1990, 01, 21);
         students.add(new Student("lionel", "messi", "vein",
-                new Date(123456789L), 1L, R.drawable.lillie, null));
+                calendar, 1L, R.drawable.lillie, null));
+        calendar.set(1990, 01, 22);
         students.add(new Student("cristiano", "ronaldo", "kurzvei",
-                new Date(123456789L), 1L, R.drawable.einstein, null));
+                calendar, 1L, R.drawable.einstein, null));
+        calendar.set(1990, 01, 23);
         students.add(new Student("andy", "rubin", "rubin",
-                new Date(123456789L), 1L, R.drawable.lillie, null));
+                calendar, 1L, R.drawable.lillie, null));
 
         Contact tempContact;
         for (Student student : students){

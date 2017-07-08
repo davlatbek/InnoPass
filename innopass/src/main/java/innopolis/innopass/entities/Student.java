@@ -26,6 +26,14 @@ public class Student extends User implements Serializable, Parcelable {
         this.groupId = groupId;
     }
 
+    public Student(String firstName, String surname, String middleName,
+                   Calendar dateOfBirth, Long groupId, int photoId, List<Contact> contacts) {
+        super(firstName, surname, middleName, dateOfBirth, photoId, contacts);
+        random = new Random();
+        this.id = System.currentTimeMillis() + random.nextInt();
+        this.groupId = groupId;
+    }
+
     public Long getId() {
         return id;
     }
