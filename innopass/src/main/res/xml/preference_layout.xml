@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <SwitchPreference
+        android:key="save_login"
+        android:title="@string/settings_save_login"
+        android:summary="@string/settings_save_login_summary">
+
+    </SwitchPreference>
+
+    <SwitchPreference
+        android:key="save_password"
+        android:title="@string/settings_save_password"
+        android:summary="@string/settings_save_password_summary">
+
+    </SwitchPreference>
+
+    <ListPreference
+        android:key="language_preference"
+        android:title="@string/settings_lang_pref"
+        android:entries="@array/language_entries"
+        android:entryValues="@array/language_entry_values">
+
+    </ListPreference>
+</PreferenceScreen>

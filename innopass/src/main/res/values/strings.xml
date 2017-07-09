@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">InnoPass™</string>
+
+    //Login Screen
+    <string name="login_username">Login</string>
+    <string name="login_password">Password</string>
+    <string name="login_submit_button">Login</string>
+    <string name="login_not_registered_yet">Not registered yet?</string>
+    <string name="register_submit_button">Register</string>
+
+    //AdminPage Screen
+    <string name="password_confirmation">Confirm password</string>
+    <string name="cancel_registration_button">Cancel</string>
+
+    //SettingsPage Screen
+    <string name="settings_save_login">Save Login</string>
+    <string name="settings_save_login_summary">Save login and put it in login field automatically. If you uncheck, password field will be disabled</string>
+    <string name="settings_save_password">Save Password</string>
+    <string name="settings_save_password_summary">Save password and put it in password field automatically</string>
+    <string name="settings_lang_pref">Language</string>
+    <string-array name="language_entries">
+        <item>English</item>
+        <item>Russian</item>
+    </string-array>
+    <string-array name="language_entry_values">
+        <item>en</item>
+        <item>ru</item>
+    </string-array>
+
+</resources>
