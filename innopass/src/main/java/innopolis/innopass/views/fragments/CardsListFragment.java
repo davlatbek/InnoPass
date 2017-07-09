@@ -1,4 +1,4 @@
-package innopolis.innopass.fragments;
+package innopolis.innopass.views.fragments;
 
 import android.app.Fragment;
 

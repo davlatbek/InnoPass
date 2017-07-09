@@ -1,24 +1,20 @@
-package innopolis.innopass.entities.permissions;
-
-import org.w3c.dom.ProcessingInstruction;
+package innopolis.innopass.models;
 
 import java.util.List;
-
-import innopolis.innopass.entities.User;
 
 /**
  * Created by davlet on 7/6/17.
  */
 
-public class PermissionQuery {
+public class QueryCard {
     private final Long id;
     private User user;
     private String queryMessage;
-    private PermissionPriorityType priority;
+    private QueryPriority priority;
     private List<PermissionType> permissionList;
 
-    public PermissionQuery(Long id, User user, String queryMessage,
-                           PermissionPriorityType priority, List<PermissionType> permissionList) {
+    public QueryCard(Long id, User user, String queryMessage,
+                     QueryPriority priority, List<PermissionType> permissionList) {
         this.id = id;
         this.user = user;
         this.queryMessage = queryMessage;
@@ -30,11 +26,11 @@ public class PermissionQuery {
         return id;
     }
 
-    public PermissionPriorityType getPriority() {
+    public QueryPriority getPriority() {
         return priority;
     }
 
-    public void setPriority(PermissionPriorityType priority) {
+    public void setPriority(QueryPriority priority) {
         this.priority = priority;
     }
 

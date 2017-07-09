@@ -1,4 +1,4 @@
-package innopolis.innopass.entities;
+package innopolis.innopass.models;
 
 import java.io.Serializable;
 

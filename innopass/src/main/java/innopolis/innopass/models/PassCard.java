@@ -1,28 +1,26 @@
-package innopolis.innopass.entities.permissions;
+package innopolis.innopass.models;
 
 import java.util.List;
-
-import innopolis.innopass.entities.User;
 
 /**
  * Created by davlet on 7/6/17.
  */
 
-public class PermissionCard {
+public class PassCard {
     private final Long id;
     private User user;
     private boolean isValid;
     private boolean isBlocked;
-    private List<PermissionQuery> queryHistory;
+    private List<QueryCard> queryHistory;
     private List<PermissionType> permissionList;
 
-    public PermissionCard(Long id){
+    public PassCard(Long id){
         this.id = id;
     }
 
-    public PermissionCard(Long id, List<PermissionQuery> queryHistory, User user,
-                          boolean isValid, boolean isBlocked,
-                          List<PermissionType> permissionList) {
+    public PassCard(Long id, List<QueryCard> queryHistory, User user,
+                    boolean isValid, boolean isBlocked,
+                    List<PermissionType> permissionList) {
         this.id = id;
         this.user = user;
         this.isValid = isValid;
@@ -59,11 +57,11 @@ public class PermissionCard {
         isBlocked = blocked;
     }
 
-    public List<PermissionQuery> getQueryHistory() {
+    public List<QueryCard> getQueryHistory() {
         return queryHistory;
     }
 
-    public void setQueryHistory(List<PermissionQuery> queryHistory) {
+    public void setQueryHistory(List<QueryCard> queryHistory) {
         this.queryHistory = queryHistory;
     }
 

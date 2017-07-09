@@ -2,15 +2,14 @@ package innopolis.innopass.utilities;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
 import innopolis.innopass.R;
-import innopolis.innopass.entities.Contact;
-import innopolis.innopass.entities.ContactType;
-import innopolis.innopass.entities.Employee;
-import innopolis.innopass.entities.Student;
+import innopolis.innopass.models.Contact;
+import innopolis.innopass.models.ContactType;
+import innopolis.innopass.models.Employee;
+import innopolis.innopass.models.Student;
 
 /**
  * Created by davlet on 7/04/17.

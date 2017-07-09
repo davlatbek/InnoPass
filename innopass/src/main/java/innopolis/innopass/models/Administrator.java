@@ -1,29 +1,23 @@
-package innopolis.innopass.entities;
+package innopolis.innopass.models;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-import java.util.Random;
 
 /**
- * Created by davlet on 7/5/17.
+ * Created by davlet on 7/6/17.
  */
 
-public class Employee extends User implements Parcelable {
+public class Administrator extends User implements Parcelable {
     private final Long id;
-    private String companyName;
-    private String position;
-    private transient Random random;
 
-    public Employee(Long id, String companyName, String position, Random random) {
-        this.random = new Random();
+    public Administrator(Long id, String firstName, String surname, String middleName,
+                         Calendar dateOfBirth, int photoId, List<Contact> contacts) {
+        super(firstName, surname, middleName, dateOfBirth, photoId, contacts);
         this.id = id;
-        this.companyName = companyName;
-        this.position = position;
     }
 
     public Long getId() {
@@ -38,8 +32,6 @@ public class Employee extends User implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeValue(this.id);
-        dest.writeString(this.companyName);
-        dest.writeString(this.position);
         dest.writeString(this.firstName);
         dest.writeString(this.surname);
         dest.writeString(this.middleName);
@@ -48,10 +40,8 @@ public class Employee extends User implements Parcelable {
         dest.writeList(this.contacts);
     }
 
-    protected Employee(Parcel in) {
+    protected Administrator(Parcel in) {
         this.id = (Long) in.readValue(Long.class.getClassLoader());
-        this.companyName = in.readString();
-        this.position = in.readString();
         this.firstName = in.readString();
         this.surname = in.readString();
         this.middleName = in.readString();
@@ -61,15 +51,15 @@ public class Employee extends User implements Parcelable {
         in.readList(this.contacts, Contact.class.getClassLoader());
     }
 
-    public static final Creator<Employee> CREATOR = new Creator<Employee>() {
+    public static final Parcelable.Creator<Administrator> CREATOR = new Parcelable.Creator<Administrator>() {
         @Override
-        public Employee createFromParcel(Parcel source) {
-            return new Employee(source);
+        public Administrator createFromParcel(Parcel source) {
+            return new Administrator(source);
         }
 
         @Override
-        public Employee[] newArray(int size) {
-            return new Employee[size];
+        public Administrator[] newArray(int size) {
+            return new Administrator[size];
         }
     };
 }

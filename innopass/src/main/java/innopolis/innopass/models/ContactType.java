@@ -1,4 +1,4 @@
-package innopolis.innopass.entities;
+package innopolis.innopass.models;
 
 /**
  * Created by davlet on 6/8/17.

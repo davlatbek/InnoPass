@@ -1,9 +1,7 @@
-package innopolis.innopass.entities;
+package innopolis.innopass.models;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-import java.util.Random;
 
 /**
  * Created by davlet on 6/17/17.

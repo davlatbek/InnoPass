@@ -1,4 +1,4 @@
-package innopolis.innopass.activities;
+package innopolis.innopass.views.activities;
 
 import android.os.Bundle;
 import android.preference.ListPreference;

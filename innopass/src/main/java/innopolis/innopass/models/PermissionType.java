@@ -1,4 +1,4 @@
-package innopolis.innopass.entities.permissions;
+package innopolis.innopass.models;
 
 /**
  * Created by davlet on 7/6/17.

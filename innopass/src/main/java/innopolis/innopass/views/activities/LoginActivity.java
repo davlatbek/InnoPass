@@ -1,4 +1,4 @@
-package innopolis.innopass.activities;
+package innopolis.innopass.views.activities;
 
 import android.content.Context;
 import android.content.Intent;

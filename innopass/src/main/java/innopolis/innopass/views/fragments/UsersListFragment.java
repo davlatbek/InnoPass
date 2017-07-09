@@ -1,4 +1,4 @@
-package innopolis.innopass.fragments;
+package innopolis.innopass.views.fragments;
 
 import android.content.Context;
 import android.net.Uri;
