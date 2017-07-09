@@ -10,67 +10,62 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import innopolis.innopass.R;
+import innopolis.innopass.database.DatabaseHelper;
+import innopolis.innopass.interfaces.view_interfaces.ILoginView;
+import innopolis.innopass.presenters.LoginPresenter;
 import innopolis.innopass.utilities.TempData;
-import innopolis.innopass.utilities.TempUsers;
 
 /**
  * Created by davlet on 7/04/17.
  */
 
-public class LoginActivity extends AppCompatActivity {
-    private EditText editTextLogin;
-    private EditText editTextPassword;
-    private Button buttonLogin;
-    private Button buttonRegister;
-    private Context context;;
+public class LoginActivity extends AppCompatActivity implements ILoginView {
+    @BindView(R.id.editTextLogin) EditText editTextLogin;
+    @BindView(R.id.editTextPassword) EditText editTextPassword;
+    @BindView(R.id.buttonLogin) Button buttonLogin;
+    @BindView(R.id.buttonRegister) Button buttonRegister;
+    private Context context;
+    private LoginPresenter loginPresenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         context = this;
-        initializeViews();
+        ButterKnife.bind(this);
+        loginPresenter = LoginPresenter.getInstance(this, DatabaseHelper.getInstance(this));
     }
 
-    private void initializeViews() {
-        editTextLogin = (EditText) findViewById(R.id.editTextLogin);
-        editTextPassword = (EditText) findViewById(R.id.editTextPassword);
-        buttonLogin = (Button) findViewById(R.id.buttonLogin);
-        buttonRegister = (Button) findViewById(R.id.buttonRegister);
-        setListeners();
+    @Override
+    public void goToUserProfile() {
+        Intent intent = new Intent(context, SettingsActivity.class);
+        intent.putExtra("student_id", TempData.getStudents().get(0).getId());
+        startActivity(intent);
     }
 
-    private void setListeners() {
-        buttonLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (validateLoginPassword(editTextLogin.getText().toString(),
-                        editTextPassword.getText().toString())){
-                    if (editTextLogin.getText().toString().contains("admin")) {
-//                        Intent intent = new Intent(context, AdminProfileActivity.class);
-//                        intent.putExtra("login", editTextLogin.getText().toString());
-//                        startActivity(intent);
-                        startActivity(new Intent(context, SettingsActivity.class));
-                    } else {
-                        //TODO implement login to user_id map
-                        Intent intent = new Intent(context, StudentProfileActivity.class);
-                        intent.putExtra("student_id", TempData.getStudents().get(0).getId());
-                        startActivity(intent);
-                    }
-                }
-                else Toast.makeText(context, "Wrong login or password!", Toast.LENGTH_SHORT).show();
-            }
-        });
-        buttonRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(context, RegistrationActivity.class));
-            }
-        });
+    @Override
+    public void goToRegistrationPage() {
+        Intent intent = new Intent(context, RegistrationActivity.class);
+        startActivity(intent);
     }
 
-    private boolean validateLoginPassword(String login, String password) {
-        return TempUsers.existsUser(login, password);
+    @Override
+    public void showError(String message) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+    }
+
+    @OnClick(R.id.buttonLogin)
+    public void OnClickLoginButton(View view){
+        loginPresenter.validateCredentials(editTextLogin.getText().toString(),
+                editTextPassword.getText().toString());
+    }
+
+    @OnClick(R.id.buttonRegister)
+    public void OnClickRegisterButton(View view){
+        startActivity(new Intent(context, RegistrationActivity.class));
     }
 }
