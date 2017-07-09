@@ -8,60 +8,44 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
+import butterknife.BindView;
+import butterknife.OnClick;
 import innopolis.innopass.R;
-import innopolis.innopass.utilities.TempUsers;
+import innopolis.innopass.database.DatabaseHelper;
+import innopolis.innopass.interfaces.view_interfaces.IRegistrationView;
+import innopolis.innopass.presenters.RegistrationPresenter;
 
 /**
  * Created by davlet on 6/20/17.
  */
 
-public class RegistrationActivity extends AppCompatActivity {
-    private EditText editTextLogin;
-    private EditText editTextPass;
-    private EditText editTextPassConfirm;
-    private Button buttonRegister;
-    private Button buttonCancel;
+public class RegistrationActivity extends AppCompatActivity implements IRegistrationView {
+    @BindView(R.id.editTextLog) EditText editTextLogin;
+    @BindView(R.id.editTextPass) EditText editTextPass;
+    @BindView(R.id.editTextPasswordConfirm) EditText editTextPassConfirm;
+    @BindView(R.id.buttonRegistration) Button buttonRegister;
+    @BindView(R.id.buttonCancelRegistration) Button buttonCancel;
     private Context context;
+    private RegistrationPresenter presenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
         context = this;
-        initializeViews();
+        presenter = RegistrationPresenter.getInstance(this, DatabaseHelper.getInstance(this));
     }
 
-    private void initializeViews() {
-        editTextLogin = (EditText) findViewById(R.id.editTextLog);
-        editTextPass = (EditText) findViewById(R.id.editTextPass);
-        editTextPassConfirm = (EditText) findViewById(R.id.editTextPasswordConfirm);
-        buttonRegister = (Button) findViewById(R.id.buttonRegistration);
-        buttonCancel = (Button) findViewById(R.id.buttonCancel);
-        buttonCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(context, LoginActivity.class));
-            }
-        });
-        buttonRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (arePasswordsIdentical(editTextPass.getText().toString(), editTextPassConfirm.getText().toString())){
-                    registerUser(editTextLogin.getText().toString(), editTextPass.getText().toString());
-                    startActivity(new Intent(context, LoginActivity.class));
-                }
-                else Toast.makeText(context, "Passwords are different", Toast.LENGTH_SHORT).show();
-            }
-        });
+    @OnClick(R.id.buttonRegistration)
+    @Override
+    public void registerUserButton(View view) {
+
     }
 
-    public boolean arePasswordsIdentical(String pass1, String pass2){
-        return pass1.equals(pass2);
-    }
-
-    public void registerUser(String login, String pass){
-        TempUsers.addUser(login, pass);
+    @OnClick(R.id.buttonCancelRegistration)
+    @Override
+    public void cancelRegistration() {
+        startActivity(new Intent(context, LoginActivity.class));
     }
 }
