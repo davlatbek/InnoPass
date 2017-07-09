@@ -12,16 +12,14 @@ import java.util.List;
  */
 
 public class Administrator extends User implements Parcelable {
-    private final Long id;
 
-    public Administrator(Long id, String firstName, String surname, String middleName,
-                         Calendar dateOfBirth, int photoId, List<Contact> contacts) {
-        super(firstName, surname, middleName, dateOfBirth, photoId, contacts);
-        this.id = id;
+    public Administrator(){
+
     }
 
-    public Long getId() {
-        return id;
+    public Administrator(Long id, String login, String password, String firstName, String surname, String middleName,
+                         Calendar dateOfBirth, int photoId, List<Contact> contacts) {
+        super(id, login, password, firstName, surname, middleName, dateOfBirth, photoId, contacts);
     }
 
     @Override
@@ -32,6 +30,8 @@ public class Administrator extends User implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeValue(this.id);
+        dest.writeString(this.login);
+        dest.writeString(this.password);
         dest.writeString(this.firstName);
         dest.writeString(this.surname);
         dest.writeString(this.middleName);
@@ -42,6 +42,8 @@ public class Administrator extends User implements Parcelable {
 
     protected Administrator(Parcel in) {
         this.id = (Long) in.readValue(Long.class.getClassLoader());
+        this.login = in.readString();
+        this.password = in.readString();
         this.firstName = in.readString();
         this.surname = in.readString();
         this.middleName = in.readString();
@@ -51,7 +53,7 @@ public class Administrator extends User implements Parcelable {
         in.readList(this.contacts, Contact.class.getClassLoader());
     }
 
-    public static final Parcelable.Creator<Administrator> CREATOR = new Parcelable.Creator<Administrator>() {
+    public static final Creator<Administrator> CREATOR = new Creator<Administrator>() {
         @Override
         public Administrator createFromParcel(Parcel source) {
             return new Administrator(source);

@@ -5,6 +5,7 @@ import android.os.Parcelable;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -12,20 +13,18 @@ import java.util.Random;
  */
 
 public class Employee extends User implements Parcelable {
-    private final Long id;
     private String companyName;
     private String position;
     private transient Random random;
 
-    public Employee(Long id, String companyName, String position, Random random) {
+    public Employee(Long id, String login, String password,
+                    String firstName, String surname, String middleName,
+                    Calendar dateOfBirth, int photoId, List<Contact> contacts,
+                    String companyName, String position) {
+        super(id, login, password, firstName, surname, middleName, dateOfBirth, photoId, contacts);
         this.random = new Random();
-        this.id = id;
         this.companyName = companyName;
         this.position = position;
-    }
-
-    public Long getId() {
-        return id;
     }
 
     @Override

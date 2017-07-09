@@ -7,6 +7,9 @@ import java.util.List;
  * Created by davlet on 6/17/17.
  */
 public class User {
+    protected Long id;
+    protected String login;
+    protected String password;
     protected String firstName;
     protected String surname;
     protected String middleName;
@@ -14,18 +17,45 @@ public class User {
     protected int photoId;
     protected List<Contact> contacts;
 
-    public User() {
+    protected User() {
 
     }
 
-    public User(String firstName, String surname, String middleName,
+    protected User(final Long id, String login, String password, String firstName, String surname, String middleName,
                 Calendar dateOfBirth, int photoId, List<Contact> contacts) {
+        this.id = id;
+        this.login = login;
+        this.password = password;
         this.firstName = firstName;
         this.surname = surname;
         this.middleName = middleName;
         this.dateOfBirth = dateOfBirth;
         this.photoId = photoId;
         this.contacts = contacts;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getFirstName() {

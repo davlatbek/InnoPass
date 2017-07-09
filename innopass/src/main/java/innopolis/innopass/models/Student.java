@@ -13,28 +13,19 @@ import java.util.Random;
  * Created by davlet on 7/04/17.
  */
 public class Student extends User implements Serializable, Parcelable {
-    private final Long id;
     private Long groupId;
     private transient Random random;
 
-    public Student(Long id, String firstName, String surname, String middleName,
-                   Calendar dateOfBirth, Long groupId, int photoId, List<Contact> contacts) {
-        super(firstName, surname, middleName, dateOfBirth, photoId, contacts);
-        random = new Random();
-        this.id = System.currentTimeMillis() + random.nextInt();
-        this.groupId = groupId;
+    public Student(){
+
     }
 
-    public Student(String firstName, String surname, String middleName,
-                   Calendar dateOfBirth, Long groupId, int photoId, List<Contact> contacts) {
-        super(firstName, surname, middleName, dateOfBirth, photoId, contacts);
+    public Student(final Long id, String login, String password, String firstName,
+                   String surname, String middleName, Calendar dateOfBirth,
+                   Long groupId, int photoId, List<Contact> contacts) {
+        super(id, login, password, firstName, surname, middleName, dateOfBirth, photoId, contacts);
         random = new Random();
-        this.id = System.currentTimeMillis() + random.nextInt();
         this.groupId = groupId;
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public Long getGroupId() {
@@ -47,15 +38,21 @@ public class Student extends User implements Serializable, Parcelable {
 
     @Override
     public boolean equals(Object o) {
-        if (o == null) return false;
+        if (this == o) return true;
         if (!(o instanceof Student)) return false;
-        if (!(this.getId().equals(((Student) o).getId()))) return false;
-        return true;
+
+        Student student = (Student) o;
+
+        if (!groupId.equals(student.groupId)) return false;
+        return random.equals(student.random);
+
     }
 
     @Override
     public int hashCode() {
-        return id.hashCode();
+        int result = groupId.hashCode();
+        result = 31 * result + random.hashCode();
+        return result;
     }
 
     @Override
@@ -65,8 +62,10 @@ public class Student extends User implements Serializable, Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeValue(this.id);
         dest.writeValue(this.groupId);
+        dest.writeValue(this.id);
+        dest.writeString(this.login);
+        dest.writeString(this.password);
         dest.writeString(this.firstName);
         dest.writeString(this.surname);
         dest.writeString(this.middleName);
@@ -76,8 +75,10 @@ public class Student extends User implements Serializable, Parcelable {
     }
 
     protected Student(Parcel in) {
-        this.id = (Long) in.readValue(Long.class.getClassLoader());
         this.groupId = (Long) in.readValue(Long.class.getClassLoader());
+        this.id = (Long) in.readValue(Long.class.getClassLoader());
+        this.login = in.readString();
+        this.password = in.readString();
         this.firstName = in.readString();
         this.surname = in.readString();
         this.middleName = in.readString();
