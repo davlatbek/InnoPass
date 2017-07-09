@@ -26,9 +26,10 @@ public class LoginPresenter {
     }
 
     public void validateCredentials(String login, String password){
-        //todo get user from db by login and validate
-        if  (database.getUserByLogin(login).getPassword().equals(password)){
-            loginView.goToUserProfile();
+        if (login != null && password != null && !login.equals("") && !password.equals("")) {
+            if  (database.getUserByLogin(login).getPassword().equals(password)){
+                loginView.goToUserProfile();
+            }
         }
         else {
             loginView.showError("Invalid login or password!");
