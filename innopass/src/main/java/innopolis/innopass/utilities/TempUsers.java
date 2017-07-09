@@ -1,7 +1,5 @@
 package innopolis.innopass.utilities;
 
-import android.util.ArrayMap;
-
 import java.util.HashMap;
 import java.util.Map;
 

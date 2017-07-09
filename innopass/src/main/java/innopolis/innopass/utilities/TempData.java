@@ -11,6 +11,8 @@ import innopolis.innopass.models.ContactType;
 import innopolis.innopass.models.Employee;
 import innopolis.innopass.models.Student;
 
+import static innopolis.innopass.R.drawable.einstein;
+
 /**
  * Created by davlet on 7/04/17.
  */
@@ -28,19 +30,19 @@ public class TempData {
         contacts = new ArrayList<>();
 
         calendar.set(1994, 01, 19);
-        students.add(new Student("lillie", "clinton", "perelman",
+        students.add(new Student(1L, "lillie", "", "lillie", "clinton", "perelman",
                 calendar, 1L, R.drawable.portraitphoto, null));
         calendar.set(1990, 01, 20);
-        students.add(new Student("albert", "einstein", "stein",
-                calendar, 1L, R.drawable.einstein, null));
+        students.add(new Student(2L, "einstein", "", "albert", "einstein", "stein",
+                calendar, 1L, einstein, null));
         calendar.set(1990, 01, 21);
-        students.add(new Student("lionel", "messi", "vein",
+        students.add(new Student(3L, "messi", "", "lionel", "messi", "vein",
                 calendar, 1L, R.drawable.lillie, null));
         calendar.set(1990, 01, 22);
-        students.add(new Student("cristiano", "ronaldo", "kurzvei",
-                calendar, 1L, R.drawable.einstein, null));
+        students.add(new Student(4L, "ronaldo", "", "cristiano", "ronaldo", "kurzvei",
+                calendar, 1L, einstein, null));
         calendar.set(1990, 01, 23);
-        students.add(new Student("andy", "rubin", "rubin",
+        students.add(new Student(5L, "andy", "", "andy", "rubin", "rubin",
                 calendar, 1L, R.drawable.lillie, null));
 
         Contact tempContact;
