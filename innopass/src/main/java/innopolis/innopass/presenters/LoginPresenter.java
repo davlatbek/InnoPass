@@ -1,40 +1,55 @@
 package innopolis.innopass.presenters;
 
-import innopolis.innopass.database.IDatabaseManager;
+import android.content.Context;
+
+import innopolis.innopass.interfaces.manager_interfaces.IStudentManager;
 import innopolis.innopass.interfaces.view_interfaces.ILoginView;
+import innopolis.innopass.managers.StudentManager;
+import innopolis.innopass.models.User;
+import innopolis.innopass.utilities.SessionManager;
 
 /**
  * Created by davlet on 7/9/17.
  */
 
 public class LoginPresenter {
-    private static LoginPresenter LOGIN_PRESENTER_INSTANCE;
+    private static LoginPresenter INSTANCE;
     ILoginView loginView;
-    IDatabaseManager database;
+    IStudentManager studentManager;
+    SessionManager sessionManager;
 
-    private LoginPresenter(ILoginView loginView, IDatabaseManager database) {
+    private LoginPresenter(ILoginView loginView, IStudentManager studentManager, Context context) {
         this.loginView = loginView;
-        this.database = database;
+        this.studentManager = studentManager;
+        this.sessionManager = new SessionManager(context);
     }
 
-    public static synchronized LoginPresenter getInstance(ILoginView loginView,
-                                                          IDatabaseManager database) {
-        if (LOGIN_PRESENTER_INSTANCE == null) {
-            LOGIN_PRESENTER_INSTANCE = new LoginPresenter(loginView, database);
+    public static synchronized LoginPresenter getInstance(ILoginView loginView, Context context) {
+        if (INSTANCE == null) {
+            INSTANCE = new LoginPresenter(loginView, StudentManager.getInstance(context), context);
         }
-        return LOGIN_PRESENTER_INSTANCE;
+        return INSTANCE;
     }
 
     public void validateCredentials(String login, String password){
-        if (login != null && password != null && !login.equals("") && !password.equals("")) {
-            if  (database.getUserByLogin(login).getPassword().equals(password)){
-                loginView.goToUserProfile();
+//        //doing work in background
+//        studentManager.doInBackGround(StudentMethodName.GET_STUDENT_BY_LOGIN, login, password);
+
+        if (!login.equals("") && !password.equals("")) {
+            User user = studentManager.getStudentByLogin(login);
+            if (user != null) {
+                if  (user.getPassword().equals(password)){
+                    loginView.goToUserProfile();
+                    sessionManager.createLoginSession(login, password);
+                } else {
+                    loginView.showError("Invalid password!");
+                }
+            } else {
+                loginView.showError("User " + login + " doesn't exist!");
             }
         }
         else {
-            loginView.showError("Invalid login or password!");
+            loginView.showError("Credentials can't be empty!");
         }
     }
-
-
 }

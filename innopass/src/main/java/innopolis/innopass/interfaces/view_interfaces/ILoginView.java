@@ -8,4 +8,5 @@ public interface ILoginView {
     void showError(String message);
     void goToUserProfile();
     void goToRegistrationPage();
+    void setTextLoginPassword(String login, String pass);
 }
