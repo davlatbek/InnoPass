@@ -8,5 +8,7 @@ import android.view.View;
 
 public interface IRegistrationView {
     void registerUserButton(View view);
-    void cancelRegistration();
+    void cancelRegistration(View view);
+    void goToLoginScreen();
+    void showError(String message);
 }
