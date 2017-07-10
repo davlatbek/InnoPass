@@ -1,13 +1,12 @@
 package innopolis.innopass.database;
 
-import innopolis.innopass.models.User;
+import innopolis.innopass.models.Student;
 
 /**
  * Created by davlet on 7/9/17.
  */
 
 public interface IDatabaseManager {
-    public User getUserByLogin(String login);
-    public String getPasswordByLogin(String password);
-    public boolean addUser(User user);
+    public Student getStudentByLogin(String login);
+    public boolean addStudent(Student user);
 }

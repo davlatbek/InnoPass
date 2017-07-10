@@ -4,9 +4,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteStatement;
 
 import innopolis.innopass.models.Student;
-import innopolis.innopass.models.User;
 
 /**
  * Created by davlet on 07/6/17.
@@ -19,7 +19,7 @@ public class DatabaseHelper extends SQLiteOpenHelper implements IDatabaseManager
 
     private DatabaseHelper(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        context.deleteDatabase(DATABASE_NAME);
+//        context.deleteDatabase(DATABASE_NAME);
     }
 
     public static synchronized DatabaseHelper getInstance(Context context){
@@ -37,7 +37,7 @@ public class DatabaseHelper extends SQLiteOpenHelper implements IDatabaseManager
     public void onCreate(SQLiteDatabase db) {
 
         //create tables, set foreign keys
-        db.execSQL("CREATE TABLE users" +
+        db.execSQL("CREATE TABLE IF NOT EXISTS users" +
                 "(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "login VARCHAR(32) NOT NULL UNIQUE, " +
                 "password VARCHAR(32) NOT NULL, " +
@@ -64,43 +64,42 @@ public class DatabaseHelper extends SQLiteOpenHelper implements IDatabaseManager
     }
 
     @Override
-    public User getUserByLogin(String login) {
+    public Student getStudentByLogin(String login) {
         SQLiteDatabase db = this.getReadableDatabase();
-        User user = new Student();
+        Student student = null;
         String query = "SELECT * FROM users WHERE login = '" + login + "'";
         db.beginTransaction();
         Cursor c = db.rawQuery(query, null);
         if (c.moveToFirst()){
+            student = new Student();
             do {
-                user.setId(c.getLong(c.getColumnIndex("id")));
-                user.setLogin(c.getString(c.getColumnIndex("login")));
-                user.setPassword(c.getString(c.getColumnIndex("password")));
-                user.setFirstName(c.getString(c.getColumnIndex("firstname")));
-                user.setSurname(c.getString(c.getColumnIndex("surname")));
+                student.setId(c.getLong(c.getColumnIndex("id")));
+                student.setLogin(c.getString(c.getColumnIndex("login")));
+                student.setPassword(c.getString(c.getColumnIndex("password")));
+                student.setFirstName(c.getString(c.getColumnIndex("firstname")));
+                student.setSurname(c.getString(c.getColumnIndex("surname")));
             } while (c.moveToNext());
             c.close();
         }
         db.endTransaction();
-        return user;
+        return student;
     }
 
     @Override
-    public boolean addUser(User user) {
-        //TODO ADD USER TO DB
+    public boolean addStudent(Student student) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "INSERT INTO users (login, password, firstname, surname, " +
+                "middlename, date_of_birth, photo_id) VALUES (" +
+                "?, ?, ?, ?, ?, ?, ?);";
+        SQLiteStatement insertStatement = db.compileStatement(query);
+        insertStatement.bindString(1, student.getLogin());
+        insertStatement.bindString(2, student.getPassword());
+        insertStatement.bindString(3, student.getFirstName());
+        insertStatement.bindString(4, student.getSurname());
+        insertStatement.bindString(5, student.getMiddleName());
+        insertStatement.bindLong(6, student.getDateOfBirth().getTimeInMillis());
+        insertStatement.bindLong(7, student.getPhotoId());
+        insertStatement.execute();
         return true;
-    }
-
-    public Cursor getUserByLoginStatement(String login){
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query("users", new String[] {"login", "password", "firstname", "surname"},
-                "login = ?", new String[] {login},
-                null, null, null);
-        return cursor;
-    }
-
-    @Override
-    public String getPasswordByLogin(String password) {
-        //TODO GET PASSWORD BY LOGIN
-        return null;
     }
 }
