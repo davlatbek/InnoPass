@@ -9,7 +9,9 @@ import innopolis.innopass.models.Student;
  */
 
 public interface IStudentManager {
+    Student getStudentByLogin(String login);
+    boolean addStudent(Student student);
     List<Student> getAllStudentsList();
-    List<Student> getStudentsListByGroupId(Long groupId);
     Student getStudentById(Long studentId);
+    boolean doInBackGround(Object... args);
 }
