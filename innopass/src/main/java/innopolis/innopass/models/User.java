@@ -1,5 +1,6 @@
 package innopolis.innopass.models;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 
@@ -30,6 +31,40 @@ public class User {
         this.surname = surname;
         this.middleName = middleName;
         this.dateOfBirth = dateOfBirth;
+        this.photoId = photoId;
+        this.contacts = contacts;
+    }
+
+    public User(String login, String password, String firstName, String surname, String middleName, Calendar dateOfBirth, int photoId, List<Contact> contacts) {
+        this.login = login;
+        this.password = password;
+        this.firstName = firstName;
+        this.surname = surname;
+        this.middleName = middleName;
+        this.dateOfBirth = dateOfBirth;
+        this.photoId = photoId;
+        this.contacts = contacts;
+    }
+
+    public User(String login, String password, String firstName, String surname, String middleName, Calendar dateOfBirth, int photoId) {
+        this.login = login;
+        this.password = password;
+        this.firstName = firstName;
+        this.surname = surname;
+        this.middleName = middleName;
+        this.dateOfBirth = dateOfBirth;
+        this.photoId = photoId;
+    }
+
+    public User(String login, String password, String firstName, String surname, String middleName, SimpleDateFormat dateOfBirth, int photoId, List<Contact> contacts) {
+        this.login = login;
+        this.password = password;
+        this.firstName = firstName;
+        this.surname = surname;
+        this.middleName = middleName;
+//        this.dateOfBirth = this.convert(dateOfBirth);
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(0,0,0);
         this.photoId = photoId;
         this.contacts = contacts;
     }

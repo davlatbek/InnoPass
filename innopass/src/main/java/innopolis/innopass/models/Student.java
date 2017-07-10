@@ -28,6 +28,10 @@ public class Student extends User implements Serializable, Parcelable {
         this.groupId = groupId;
     }
 
+    public Student(String login, String password, String firstname, String surname, String middleName, Calendar dob, int photoId) {
+        super(login, password, firstname, surname, middleName, dob, photoId);
+    }
+
     public Long getGroupId() {
         return groupId;
     }
