@@ -16,9 +16,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import innopolis.innopass.R;
-import innopolis.innopass.database.DatabaseHelper;
 import innopolis.innopass.interfaces.view_interfaces.IRegistrationView;
-import innopolis.innopass.models.User;
+import innopolis.innopass.models.Student;
 import innopolis.innopass.presenters.RegistrationPresenter;
 
 /**
@@ -44,13 +43,13 @@ public class RegistrationActivity extends AppCompatActivity implements IRegistra
         setContentView(R.layout.activity_registration);
         context = this;
         ButterKnife.bind(this);
-        presenter = RegistrationPresenter.getInstance(this, DatabaseHelper.getInstance(this));
+        presenter = RegistrationPresenter.getInstance(this, context);
     }
 
     @OnClick(R.id.buttonRegRegister)
     @Override
     public void registerUserButton(View view) {
-        presenter.registerNewUser(new User(editTextLogin.getText().toString(),
+        presenter.registerNewUser(new Student(editTextLogin.getText().toString(),
                 editTextPass.getText().toString(), editFirstName.getText().toString(),
                 editSurname.getText().toString(), editRegMiddleName.getText().toString(),
                 Calendar.getInstance(), R.drawable.lillie));
