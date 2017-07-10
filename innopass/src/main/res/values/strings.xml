@@ -27,4 +27,13 @@
         <item>ru</item>
     </string-array>
 
+    //Navigation Drawer menu elements
+    <string-array name="nav_drawer">
+        <item>Profile</item>
+        <item>Cards</item>
+        <item>Queries</item>
+        <item>Logout</item>
+        <item>About</item>
+    </string-array>
+
 </resources>
