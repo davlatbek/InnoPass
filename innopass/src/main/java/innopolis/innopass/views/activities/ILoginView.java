@@ -1,4 +1,4 @@
-package innopolis.innopass.interfaces.view_interfaces;
+package innopolis.innopass.views.activities;
 
 /**
  * Created by davlet on 7/9/17.
