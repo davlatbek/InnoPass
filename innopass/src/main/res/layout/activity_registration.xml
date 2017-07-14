@@ -5,106 +5,120 @@
     android:layout_height="match_parent"
     android:padding="5sp">
 
-    <TextView
-        android:id="@+id/textRegFirstName"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="First name" />
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/editRegFirstName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textRegSurname"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Surname" />
+            <TextView
+                android:id="@+id/textRegFirstName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="First name" />
 
-    <EditText
-        android:id="@+id/editRegSurname"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName" />
+            <EditText
+                android:id="@+id/editRegFirstName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
 
-    <TextView
-        android:id="@+id/textRegMiddleName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Middle Name" />
+            <TextView
+                android:id="@+id/textRegSurname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Surname" />
 
-    <EditText
-        android:id="@+id/editRegMiddleName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName" />
+            <EditText
+                android:id="@+id/editRegSurname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
 
-    <TextView
-        android:id="@+id/textRegDob"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Date of birth" />
+            <TextView
+                android:id="@+id/textRegMiddleName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Middle Name" />
 
-    <EditText
-        android:id="@+id/editRegDob"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="date" />
+            <EditText
+                android:id="@+id/editRegMiddleName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
 
-    <TextView
-        android:id="@+id/textRegLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/login_username" />
+            <TextView
+                android:id="@+id/textRegDob"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Date of birth" />
 
-    <EditText
-        android:id="@+id/editRegLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"/>
+            <EditText
+                android:id="@+id/editRegDob"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="date" />
 
-    <TextView
-        android:id="@+id/textRegPass"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/login_password" />
+            <TextView
+                android:id="@+id/textRegLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/login_username" />
 
-    <EditText
-        android:id="@+id/editRegPass"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPassword" />
+            <EditText
+                android:id="@+id/editRegLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"/>
 
-    <TextView
-        android:id="@+id/textRegPasswordConfirm"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/password_confirmation" />
+            <TextView
+                android:id="@+id/textRegPass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/login_password" />
 
-    <EditText
-        android:id="@+id/editRegPasswordConfirm"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPassword" />
+            <EditText
+                android:id="@+id/editRegPass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPassword" />
 
-    <Button
-        android:id="@+id/buttonRegRegister"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/register_submit_button" />
+            <TextView
+                android:id="@+id/textRegPasswordConfirm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/password_confirmation" />
 
-    <Button
-        android:id="@+id/buttonRegCancel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/cancel_registration_button" />
+            <EditText
+                android:id="@+id/editRegPasswordConfirm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPassword" />
+
+            <Button
+                android:id="@+id/buttonRegRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/register_submit_button" />
+
+            <Button
+                android:id="@+id/buttonRegCancel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/cancel_registration_button" />
+        </LinearLayout>
+
+    </ScrollView>
+
+
 </LinearLayout>

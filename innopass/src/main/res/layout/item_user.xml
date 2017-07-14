@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardViewUser"
+    android:orientation="vertical"
+    android:layout_margin="5dp"
+    android:background="@drawable/back3"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:background="?android:selectableItemBackground"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/userDetails"
+            android:padding="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/photoUser"
+                android:src="@drawable/einstein"
+                android:layout_width="150dp"
+                android:layout_height="150dp" />
+
+            <RelativeLayout
+                android:layout_centerInParent="true"
+                android:padding="20dp"
+                android:layout_toRightOf="@+id/photoUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/textUserName"
+                    android:textSize="24sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:text="Davlatbek" />
+
+                <TextView
+                    android:id="@+id/textUserSurname"
+                    android:textSize="20sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textUserName"
+                    android:text="Isroilov" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <!--<View
+            android:layout_width="fill_parent"
+            android:layout_below="@id/textMessage"
+            android:background="@android:color/white"
+            android:layout_height="2dp"/>-->
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
