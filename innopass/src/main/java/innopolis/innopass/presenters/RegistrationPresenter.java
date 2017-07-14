@@ -2,11 +2,11 @@ package innopolis.innopass.presenters;
 
 import android.content.Context;
 
-import innopolis.innopass.interfaces.manager_interfaces.IStudentManager;
-import innopolis.innopass.interfaces.manager_interfaces.StudentMethodName;
-import innopolis.innopass.interfaces.view_interfaces.IRegistrationView;
-import innopolis.innopass.managers.StudentManager;
-import innopolis.innopass.models.Student;
+import innopolis.innopass.models.entities.User;
+import innopolis.innopass.models.managers.IUserManager;
+import innopolis.innopass.models.managers.MethodName;
+import innopolis.innopass.models.managers.UserManager;
+import innopolis.innopass.views.activities.IRegistrationView;
 
 /**
  * Created by davlet on 7/9/17.
@@ -15,11 +15,11 @@ import innopolis.innopass.models.Student;
 public class RegistrationPresenter {
     private static RegistrationPresenter INSTANCE;
     IRegistrationView registrationView;
-    IStudentManager studentManager;
+    IUserManager userManager;
 
     private RegistrationPresenter(IRegistrationView registrationView,
-                                  IStudentManager studentManager){
-        this.studentManager = studentManager;
+                                  IUserManager userManager){
+        this.userManager = userManager;
         this.registrationView = registrationView;
     }
 
@@ -27,23 +27,23 @@ public class RegistrationPresenter {
                                                     Context context) {
         if (INSTANCE == null) {
             INSTANCE = new RegistrationPresenter(registrationView,
-                    StudentManager.getInstance(context));
+                    UserManager.getInstance(context));
         }
         return INSTANCE;
     }
 
-    public void registerNewUser(Student student){
+    public void registerNewUser(User user){
 //        //do in standard way
 //        if (student != null) {
-//            if (studentManager.addStudent(student)){
+//            if (userManager.addUser(student)){
 //                registrationView.goToLoginScreen();
 //            } else {
 //                registrationView.showError("One of the fields is not valid or filled!");
 //            }
 //        }
         //do in background
-        if (student != null) {
-            if (studentManager.doInBackGround(StudentMethodName.ADD_STUDENT, student, null))
+        if (user != null) {
+            if (userManager.doInBackGround(MethodName.ADD_STUDENT, user, null))
                 registrationView.goToLoginScreen();
         }
     }

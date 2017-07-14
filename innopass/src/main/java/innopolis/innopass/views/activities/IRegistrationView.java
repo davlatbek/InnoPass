@@ -1,4 +1,4 @@
-package innopolis.innopass.interfaces.view_interfaces;
+package innopolis.innopass.views.activities;
 
 import android.view.View;
 

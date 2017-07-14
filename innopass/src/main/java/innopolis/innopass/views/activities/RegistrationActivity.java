@@ -16,8 +16,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import innopolis.innopass.R;
-import innopolis.innopass.interfaces.view_interfaces.IRegistrationView;
-import innopolis.innopass.models.Student;
+import innopolis.innopass.models.entities.User;
 import innopolis.innopass.presenters.RegistrationPresenter;
 
 /**
@@ -46,10 +45,31 @@ public class RegistrationActivity extends AppCompatActivity implements IRegistra
         presenter = RegistrationPresenter.getInstance(this, context);
     }
 
+    private boolean validateFields() {
+        if (editFirstName.getText().toString().isEmpty()){
+            editFirstName.setError("First name can't be empty");
+            return false;
+        }
+        if (editSurname.getText().toString().isEmpty()) {
+            editSurname.setError("Surname can't be empty");
+            return false;
+        }
+        if (!editTextLogin.getText().toString().matches("^[a-zA-Z0-9._-]{3,}$")){
+            editTextLogin.setError(getResources().getString(R.string.reg_login_error));
+            return false;
+        }
+        if (!editTextPass.getText().toString().matches("((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})")){
+            editTextPass.setError(getResources().getString(R.string.reg_password_error));
+            return false;
+        }
+        return true;
+    }
+
     @OnClick(R.id.buttonRegRegister)
     @Override
     public void registerUserButton(View view) {
-        presenter.registerNewUser(new Student(editTextLogin.getText().toString(),
+        if (validateFields())
+            presenter.registerNewUser(new User(editTextLogin.getText().toString(),
                 editTextPass.getText().toString(), editFirstName.getText().toString(),
                 editSurname.getText().toString(), editRegMiddleName.getText().toString(),
                 Calendar.getInstance(), R.drawable.lillie));
