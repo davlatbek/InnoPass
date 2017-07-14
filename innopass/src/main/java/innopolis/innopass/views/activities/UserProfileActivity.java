@@ -14,11 +14,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 import innopolis.innopass.R;
-import innopolis.innopass.models.User;
+import innopolis.innopass.models.entities.User;
 import innopolis.innopass.utilities.SessionManager;
 import innopolis.innopass.utilities.TempData;
 
-public class StudentProfileActivity extends AppCompatActivity {
+public class UserProfileActivity extends AppCompatActivity {
     String[] left_menu_items;
     @BindView(R.id.drawer_layout) DrawerLayout drawerLayout;
     @BindView(R.id.left_drawer) ListView listView;
@@ -68,38 +68,5 @@ public class StudentProfileActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    private void initDrawer() {
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//
-//        final TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-//        tabLayout.addTab(tabLayout.newTab().setText("Queries"));
-//        tabLayout.addTab(tabLayout.newTab().setText("Cards"));
-//        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-//
-//        final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
-//        final PagerAdapter adapter = new PagerAdapter
-//                (getSupportFragmentManager(), tabLayout.getTabCount());
-//        viewPager.setAdapter(adapter);
-//        viewPager.addOnPageChangeListener(
-//                new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-//        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-//            @Override
-//            public void onTabSelected(TabLayout.Tab tab) {
-//                viewPager.setCurrentItem(tab.getPosition());
-//            }
-//
-//            @Override
-//            public void onTabUnselected(TabLayout.Tab tab) {
-//
-//            }
-//
-//            @Override
-//            public void onTabReselected(TabLayout.Tab tab) {
-//                Toast.makeText(getApplicationContext(), "reselected", Toast.LENGTH_SHORT).show();
-//            }
-//        });
     }
 }
