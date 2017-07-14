@@ -8,17 +8,30 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".views.activities.LoginActivity">
+        <activity android:name=".views.activities.LoginActivity"
+            android:launchMode="standard">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".views.activities.RegistrationActivity"></activity>
-        <activity android:name=".views.activities.AdminProfileActivity"></activity>
-        <activity android:name=".views.activities.StudentProfileActivity"></activity>
-        <activity android:name=".views.activities.SettingsActivity"></activity>
+        <activity android:name=".views.activities.RegistrationActivity"
+            android:launchMode="standard">
+
+        </activity>
+        <activity android:name=".views.activities.AdminProfileActivity"
+            android:launchMode="singleTask">
+
+        </activity>
+        <activity android:name=".views.activities.UserProfileActivity"
+            android:launchMode="singleTask">
+
+        </activity>
+        <activity android:name=".views.activities.SettingsActivity"
+            android:launchMode="standard">
+
+        </activity>
     </application>
 
 </manifest>

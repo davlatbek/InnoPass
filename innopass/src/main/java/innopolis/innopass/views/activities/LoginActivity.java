@@ -15,7 +15,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import innopolis.innopass.R;
-import innopolis.innopass.interfaces.view_interfaces.ILoginView;
 import innopolis.innopass.presenters.LoginPresenter;
 import innopolis.innopass.utilities.SessionManager;
 
@@ -45,9 +44,17 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
     }
 
     @Override
-    public void goToUserProfile() {
-        Intent intent = new Intent(context, StudentProfileActivity.class);
-        intent.putExtra("student_id", 0L);
+    public void goToUserProfile(Long id) {
+        Intent intent = new Intent(context, UserProfileActivity.class);
+        intent.putExtra("user_id", id);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        ActivityCompat.finishAffinity(LoginActivity.this);
+    }
+
+    @Override
+    public void goToAdminProfile() {
+        Intent intent = new Intent(context, AdminProfileActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         ActivityCompat.finishAffinity(LoginActivity.this);

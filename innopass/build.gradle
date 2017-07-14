@@ -36,4 +36,9 @@ dependencies {
     provided "org.projectlombok:lombok:1.16.16"
     compile 'com.jakewharton:butterknife:8.7.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
+    //for sliding tabs support
+    compile 'com.android.support:design:23.4.0'
+    //for fields validation
+//    compile 'com.mobsandgeeks:android-saripaar:2.0.3'
+    compile 'de.hdodenhof:circleimageview:2.1.0'
 }
