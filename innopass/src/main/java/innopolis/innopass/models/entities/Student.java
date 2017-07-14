@@ -1,4 +1,4 @@
-package innopolis.innopass.models;
+package innopolis.innopass.models.entities;
 
 import android.os.Parcel;
 import android.os.Parcelable;
