@@ -1,4 +1,4 @@
-package innopolis.innopass.interfaces.presenter_interfaces;
+package innopolis.innopass.presenters;
 
 /**
  * Created by davlet on 7/10/17.
