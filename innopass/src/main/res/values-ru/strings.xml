@@ -25,4 +25,16 @@
         <item>ru</item>
     </string-array>
 
+    //Navigation Drawer menu elements
+    <string-array name="nav_drawer">
+        <item>Профиль</item>
+        <item>Пользователи</item>
+        <item>Карты</item>
+        <item>Запросы</item>
+        <item>О программе</item>
+        <item>Выйти</item>
+    </string-array>
+
+    <string name="reg_login_error">Логин должен содержать от 6 до 20 символов</string>
+
 </resources>

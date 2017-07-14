@@ -30,10 +30,25 @@
     //Navigation Drawer menu elements
     <string-array name="nav_drawer">
         <item>Profile</item>
+        <item>Users</item>
         <item>Cards</item>
         <item>Queries</item>
-        <item>Logout</item>
         <item>About</item>
+        <item>Logout</item>
     </string-array>
+
+    //Navigation Drawer menu elements
+    <string-array name="nav_drawer_user">
+        <item>My profile</item>
+        <item>Card</item>
+        <item>Queries history</item>
+        <item>About</item>
+        <item>Logout</item>
+    </string-array>
+
+    <string name="reg_login_error">Login must be from 6 to 20
+        characters and latin letters only</string>
+    <string name="reg_password_error">Password must be from 6 to 20
+        characters and must contain alphanumberic with symbols</string>
 
 </resources>
