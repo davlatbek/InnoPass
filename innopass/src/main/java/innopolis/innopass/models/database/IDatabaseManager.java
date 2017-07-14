@@ -1,6 +1,6 @@
-package innopolis.innopass.database;
+package innopolis.innopass.models.database;
 
-import innopolis.innopass.models.User;
+import innopolis.innopass.models.entities.User;
 
 /**
  * Created by davlet on 7/9/17.

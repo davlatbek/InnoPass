@@ -1,4 +1,4 @@
-package innopolis.innopass.database;
+package innopolis.innopass.models.database;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
 
-import innopolis.innopass.models.User;
+import innopolis.innopass.models.entities.User;
 
 /**
  * Created by davlet on 07/6/17.
@@ -127,7 +127,7 @@ public class DatabaseHelper extends SQLiteOpenHelper implements IDatabaseManager
 
     @Override
     public User getUserByLogin(String login) {
-        SQLiteDatabase db = this.getReadableDatabase();
+        SQLiteDatabase db = getWritableDatabase();
         User user = null;
         String query = "SELECT * FROM users WHERE login = '" + login + "'";
         db.beginTransaction();
@@ -149,7 +149,7 @@ public class DatabaseHelper extends SQLiteOpenHelper implements IDatabaseManager
 
     @Override
     public boolean addUser(User user) {
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = getWritableDatabase();
         String query = "INSERT INTO users (login, password, firstname, surname, " +
                 "middlename, date_of_birth, photo_id) VALUES (" +
                 "?, ?, ?, ?, ?, ?, ?);";
