@@ -1,9 +1,9 @@
-package innopolis.innopass.managers;
+package innopolis.innopass.models.managers;
 
 import java.util.Calendar;
 
-import innopolis.innopass.models.PassCard;
-import innopolis.innopass.models.QueryCard;
+import innopolis.innopass.models.entities.PassCard;
+import innopolis.innopass.models.entities.QueryCard;
 
 /**
  * Created by davlet on 7/6/17.

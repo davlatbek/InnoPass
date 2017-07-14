@@ -1,4 +1,4 @@
-package innopolis.innopass.managers;
+package innopolis.innopass.models.managers;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -7,12 +7,10 @@ import android.widget.Toast;
 
 import java.util.List;
 
-import innopolis.innopass.database.DatabaseHelper;
-import innopolis.innopass.database.IDatabaseManager;
-import innopolis.innopass.interfaces.manager_interfaces.IUserManager;
-import innopolis.innopass.interfaces.manager_interfaces.MethodName;
-import innopolis.innopass.models.Student;
-import innopolis.innopass.models.User;
+import innopolis.innopass.models.database.DatabaseHelper;
+import innopolis.innopass.models.database.IDatabaseManager;
+import innopolis.innopass.models.entities.Student;
+import innopolis.innopass.models.entities.User;
 
 /**
  * Created by davlet on 7/9/17.

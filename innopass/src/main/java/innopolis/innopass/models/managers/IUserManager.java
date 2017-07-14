@@ -1,8 +1,8 @@
-package innopolis.innopass.interfaces.manager_interfaces;
+package innopolis.innopass.models.managers;
 
 import java.util.List;
 
-import innopolis.innopass.models.User;
+import innopolis.innopass.models.entities.User;
 
 /**
  * Created by davlet on 7/9/17.

@@ -1,4 +1,4 @@
-package innopolis.innopass.interfaces.manager_interfaces;
+package innopolis.innopass.models.managers;
 
 /**
  * Created by davlet on 7/10/17.
