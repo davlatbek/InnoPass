@@ -18,11 +18,11 @@ public class User {
     protected int photoId;
     protected List<Contact> contacts;
 
-    protected User() {
+    public User() {
 
     }
 
-    protected User(final Long id, String login, String password, String firstName, String surname, String middleName,
+    public User(Long id, String login, String password, String firstName, String surname, String middleName,
                 Calendar dateOfBirth, int photoId, List<Contact> contacts) {
         this.id = id;
         this.login = login;

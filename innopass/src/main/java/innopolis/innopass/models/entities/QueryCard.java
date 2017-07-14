@@ -7,9 +7,10 @@ import java.util.List;
  */
 
 public class QueryCard {
-    private final Long id;
+    private Long id;
     private User user;
     private String queryMessage;
+    private boolean status;
     private QueryPriority priority;
     private List<PermissionType> permissionList;
 
@@ -18,12 +19,21 @@ public class QueryCard {
         this.id = id;
         this.user = user;
         this.queryMessage = queryMessage;
+        this.status = true;
         this.priority = priority;
         this.permissionList = permissionList;
     }
 
     public Long getId() {
         return id;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     public QueryPriority getPriority() {

@@ -9,34 +9,35 @@ import java.util.List;
 
 import innopolis.innopass.database.DatabaseHelper;
 import innopolis.innopass.database.IDatabaseManager;
-import innopolis.innopass.interfaces.manager_interfaces.IStudentManager;
-import innopolis.innopass.interfaces.manager_interfaces.StudentMethodName;
+import innopolis.innopass.interfaces.manager_interfaces.IUserManager;
+import innopolis.innopass.interfaces.manager_interfaces.MethodName;
 import innopolis.innopass.models.Student;
+import innopolis.innopass.models.User;
 
 /**
  * Created by davlet on 7/9/17.
  */
 
-public class StudentManager extends AsyncTask<Object, String, Object[]>
-        implements IStudentManager {
-    private static StudentManager studentManager;
+public class UserManager extends AsyncTask<Object, String, Object[]>
+        implements IUserManager {
+    private static UserManager userManager;
     private IDatabaseManager databaseManager;
     private Context context;
 
-    public StudentManager(Context context){
+    public UserManager(Context context){
         this.context = context;
         databaseManager = DatabaseHelper.getInstance(context);
     }
 
-    public static StudentManager getInstance(Context context) {
-        if (studentManager == null) {
+    public static UserManager getInstance(Context context) {
+        if (userManager == null) {
             synchronized (Student.class){
-                if (studentManager == null) {
-                    studentManager = new StudentManager(context);
+                if (userManager == null) {
+                    userManager = new UserManager(context);
                 }
             }
         }
-        return studentManager;
+        return userManager;
     }
 
     public void setContext(Context context){
@@ -45,23 +46,23 @@ public class StudentManager extends AsyncTask<Object, String, Object[]>
     }
 
     @Override
-    public List<Student> getAllStudentsList() {
+    public List<User> getAllUsersList() {
         return null;
     }
 
     @Override
-    public Student getStudentById(Long studentId) {
+    public Student getUserById(Long userId) {
         return null;
     }
 
     @Override
-    public Student getStudentByLogin(String login) {
-        return databaseManager.getStudentByLogin(login);
+    public User getUserByLogin(String login) {
+        return databaseManager.getUserByLogin(login);
     }
 
     @Override
-    public boolean addStudent(Student student) {
-        return databaseManager.addStudent(student);
+    public boolean addUser(User user) {
+        return databaseManager.addUser(user);
     }
 
     @Override
@@ -72,7 +73,7 @@ public class StudentManager extends AsyncTask<Object, String, Object[]>
 
     @Override
     protected Object[] doInBackground(Object... args) {
-        StudentMethodName methodName = (StudentMethodName) args[0];
+        MethodName methodName = (MethodName) args[0];
         Object args1;
         if (args[1] != null)
             args1 = args[1];
@@ -87,14 +88,14 @@ public class StudentManager extends AsyncTask<Object, String, Object[]>
         switch (methodName) {
             case ADD_STUDENT:
                 publishProgress("Adding new student...");
-                addStudent((Student) args[1]);
+                addUser((User)args[1]);
                 result[0] = "Finished adding new student!";
                 result[1] = null;
                 result[2] = null;
                 return result;
             case GET_STUDENT_BY_LOGIN:
                 publishProgress("Getting student by login...");
-                result[1] = getStudentByLogin((String) args[1]);
+                result[1] = getUserByLogin((String) args[1]);
                 result[0] = "Finished getting student";
                 result[2] = args[2];
                 break;

@@ -6,7 +6,8 @@ package innopolis.innopass.interfaces.view_interfaces;
 
 public interface ILoginView {
     void showError(String message);
-    void goToUserProfile();
+    void goToUserProfile(Long id);
+    void goToAdminProfile();
     void goToRegistrationPage();
     void setTextLoginPassword(String login, String pass);
 }
