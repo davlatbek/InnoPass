@@ -3,6 +3,7 @@ package innopolis.innopass.views.activities;
 import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
@@ -97,7 +98,13 @@ public class AdminProfileActivity extends AppCompatActivity implements IAdminPro
                             R.id.main_admin_profile_layout, fragment).commit();
                     break;
                 case 4:
-                    AlertDialog.Builder dialogAbout = new AlertDialog.Builder(getApplicationContext());
+                    AlertDialog.Builder dialogAbout;
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        dialogAbout = new AlertDialog.Builder(getApplicationContext(),
+                                android.R.style.Theme_Material_Dialog_Alert);
+                    } else {
+                        dialogAbout = new AlertDialog.Builder(getApplicationContext());
+                    }
                     dialogAbout.setTitle("About")
                             .setMessage("Innopolis PassCard App. 2017. \nInnopolis\nDavlet Israilov")
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
